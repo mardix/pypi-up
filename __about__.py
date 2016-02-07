@@ -7,7 +7,7 @@ __all__ = [
 ]
 
 __title__ = "pypi-up"
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 __summary__ = "pypi-up a simple command line tool to increase version number of package and release it on Pypi"
 __uri__ = "https://github.com/mardix/pypi-up"
 __author__ = "Mardix"
