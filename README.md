@@ -9,7 +9,7 @@ It also git tag the version and push it to the repository.
 
 ## Installation and setup
 
-    pip-install pypi-up
+    pip install pypi-up
     
     pypi-up --setup
     
@@ -79,7 +79,7 @@ The \__about__.py file can be called in your application as normal module
 With these two file, `pypi-up` will be able to increase the version and update the 
 \__about__.py effortlessly. You don't need to touch the versioning file at all.
 
-By the default the __about__.py is at the root of the directory.
+By the default the \__about__.py is at the root of the directory.
 
 But if you want to place it somewhere else, in your `setup.cfg` change the following to your path
 
