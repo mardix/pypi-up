@@ -63,15 +63,21 @@ To skip the prompt
     
 ---
 
-### setup.cfg and __about__.py 
+### setup.cfg and \__about__.py 
 
 **setup.cfg** is a config file that host the version number and the pypi-up file to update.
 
-**__about__.py** contains the package's info. `__version__` is required to be included 
-in the file.
+**\__about__.py** contains the package's info, such as name, author, license and 
+`__version__` which is the version number of the application. `__version__` is required in the file. 
+
+The \__about__.py file can be called in your application as normal module
+
+    import __about__
+    
+    print(__about__.__version__)
 
 With these two file, `pypi-up` will be able to increase the version and update the 
-__about__.py effortlessly. 
+\__about__.py effortlessly. You don't need to touch the versioning file at all.
 
 By the default the __about__.py is at the root of the directory.
 
