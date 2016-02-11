@@ -1,2 +1,2 @@
 include *.py *.txt *.md LICENSE CHANGELOG
-
+recursive-include pypi_up *

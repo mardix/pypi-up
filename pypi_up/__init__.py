@@ -5,13 +5,13 @@ and release on Pypi. Also Git Tag/Push the release.
 It can increase patch, minor, major, release and dev version
 
 Features:
-    - Increase versionning 
+    - Increase versionning
     - Git Tag/Push release
     - Release to PYPI
 
 Setup:
 
-run: pypi-up --setup 
+run: pypi-up --setup
 
 Manually:
 
@@ -29,13 +29,15 @@ What it will do, it will access the file and change the version number
 
 
 """
-import re
-import os
-import argparse
 import ConfigParser
-from reversionup import Reversionup
+import argparse
+import os
+import re
+
 import sh
-from __about__ import *
+from reversionup import Reversionup
+
+from pypi_up.__about__ import *
 
 CWD = os.getcwd()
 setup_cfg = "%s/setup.cfg" % CWD
@@ -87,7 +89,7 @@ def main():
                                          description=desc)
         parser.add_argument("--setup",
                            help="Setup PYPI-REL",
-                           action="store_true")        
+                           action="store_true")
         parser.add_argument("-v", "--version",
                            help="Show the current version",
                            action="store_true")
@@ -111,11 +113,11 @@ def main():
                            action="store_true")
         arg = parser.parse_args()
         config = ConfigParser.ConfigParser()
-        
+
         print("-" * 80)
         print("=== PYPI Up ===")
         print("")
-        
+
         if arg.setup:
             print("Setting up...")
             if not os.path.isfile(about_file):
@@ -130,8 +132,8 @@ def main():
             print("Done!")
             print("-" * 80)
             exit()
-        
-        
+
+
         with sh.pushd(CWD):
             if sh.git("status", "--porcelain").strip():
                 raise Exception("Repository is UNCLEAN. Commit your changes")

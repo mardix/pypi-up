@@ -2,10 +2,9 @@
 PYPI-REL
 """
 
-import os
 from setuptools import setup, find_packages
 
-import __about__
+from pypi_up import __about__
 
 setup(
     name=__about__.__title__,
