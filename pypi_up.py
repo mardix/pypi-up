@@ -35,9 +35,7 @@ import argparse
 import ConfigParser
 from reversionup import Reversionup
 import sh
-
-__NAME__ = "pypi-up"
-__version__ = "0.0.1"
+from __about__ import *
 
 CWD = os.getcwd()
 setup_cfg = "%s/setup.cfg" % CWD
@@ -81,7 +79,7 @@ def main():
 
     try:
         prog = "pypi-up"
-        desc = "%s %s" % (__NAME__, __version__)
+        desc = "%s %s" % (__title__, __version__)
         desc += " - pypi-up a simple command line tool to increase version number of package" \
                 "and release on Pypi. Also Git Tag/Push the release"
 
