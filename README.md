@@ -87,6 +87,11 @@ But if you want to place it somewhere else, in your `setup.cfg` change the follo
     
     [pypi-up]
     version-file = $path/__about__.py  
+    auto-increment = patch
+
+The `auto-increment` accepts `patch`, `minor`, `major` or blank. 
+
+When `pypi-up` it will auto-increment the version instead of doing it manually all the time.
 
 ---
 

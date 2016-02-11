@@ -126,6 +126,7 @@ def main():
             if not os.path.isfile(setup_cfg):
                 config.add_section(conf_section_name)
                 config.set(conf_section_name, "version-file", "__about__.py")
+                config.set(conf_section_name, "auto-increment", "patch")
                 with open(setup_cfg, "w+") as f:
                     config.write(f)
             print("Done!")
@@ -142,17 +143,26 @@ def main():
             version_file = os.path.join(CWD, version_file)
             if not os.path.isfile(version_file):
                 raise Exception("version-file '%s' is required" % version_file)
+            auto_inc = ""
+            if config.has_option(conf_section_name, "auto-increment"):
+                auto_inc = config.get(conf_section_name, "auto-increment").strip()
 
             rvnup = Reversionup(file=setup_cfg)
             old_version = rvnup.version
 
+            def test_auto_inc(auto_inc_):
+                return auto_inc == auto_inc_ and (not arg.patch
+                         and not arg.minor
+                         and not arg.major
+                         and not arg.version
+                         and not arg.edit)
             if arg.edit:
                 rvnup.version = arg.edit
-            elif arg.patch:
+            elif arg.patch or test_auto_inc("patch"):
                 rvnup.inc_patch()
-            elif arg.minor:
+            elif arg.minor or test_auto_inc("minor"):
                 rvnup.inc_minor()
-            elif arg.major:
+            elif arg.major or test_auto_inc("major"):
                 rvnup.inc_major()
             elif arg.version:
                 print("Current version: %s" % rvnup.version)
